@@ -70,16 +70,18 @@ This guide section will help you to setup the dotfile configurations in your sys
     git remote set-url origin <your private repo ssh url>
     ```
 
-    Naviagte to dotfiles directory & update the remote url and update the submodule:
+    Naviagte to dotfiles directory & update the remote url from HTTPS to SSH:
     ```shell
+    cd ..
     git remote set-url origin <your dotfiles repo ssh url>
-    git submodule update
     ```
 
 4. Symlink your dotfiles:
     **NOTE:** My dotfiles path is user's home directory i.e. `~/dotfiles`
+    **NOTE:** I am removing the existing .ssh directory.
     ```shell
     cd
+    rm -rf .ssh
     ln -sf dotfiles/.ssh .ssh
     ln -sf dotfiles/.config/git/.gitconfig .gitconfig
     ln -sf dotfiles/.config/zsh/.zshrc .zshrc
@@ -97,3 +99,9 @@ This guide section will help you to setup the dotfile configurations in your sys
     mv FiraCodeNerdFont-Regular.ttf .termux/font.ttf
     ```
 
+5. Resync and update the submodule:
+    Navigate to dotfile directory use below commands:
+    ```shell
+    git submodule sync
+    git submodule update
+    ```
