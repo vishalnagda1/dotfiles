@@ -21,7 +21,8 @@ This guide section will help you to setup the dotfile configurations in your sys
 1. Install required packages
     Termux (Android):-
     ```shell
-    pkg update && pkg upgrade -y
+    pkg update -y
+    pkg upgrade -y
     pkg install git openssh neovim starship zsh tmux -y
     chsh -s zsh
     ```
