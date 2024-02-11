@@ -21,19 +21,19 @@ This guide section will help you to setup the dotfile configurations in your sys
 1. Install required packages
     Termux (Android):-
     ```shell
-        pkg update && pkg upgrade -y
-        pkg install git openssh neovim starship zsh -y
-        chsh -s zsh
+    pkg update && pkg upgrade -y
+    pkg install git openssh neovim starship zsh -y
+    chsh -s zsh
     ```
 
     Mac & Ubuntu:-
     ```shell
-        # Will update soon
+    # Will update soon
     ```
 
 2. Clone the repo at your desired location
     ```shell
-        git clone https://github.com/vishalnagda1/dotfiles.git --recursive
+    git clone https://github.com/vishalnagda1/dotfiles.git --recursive
     ```
 
     **NOTE:** Currently we're using HTTPS to clone the repo. We will update the remote to SSH later, after setting up the ssh config.
@@ -43,13 +43,13 @@ This guide section will help you to setup the dotfile configurations in your sys
 
 3. Goto the dotfile repo and update the submodule
     ```shell
-        cd dotfiles
+    cd dotfiles
     ```
 
     Update the private repo URL in .gitmodules (use HTTPS url for now later we will update it to SSH)
     
     ```shell
-        vi .gitmodules
+    vi .gitmodules
     ```
     **NOTE:** I'm using `vi` editor, you can use any of your choice.
     
@@ -58,42 +58,41 @@ This guide section will help you to setup the dotfile configurations in your sys
     Update the submodule:
 
     ```shell
-        git submodule sync
-        git submodule update
+    git submodule sync
+    git submodule update
     ```
 
     Now navigte to your private repo:
     ```shell
-        cd Private
-        git checkout main
-        git remote set-url origin <your private repo ssh url>
+    cd Private
+    git checkout main
+    git remote set-url origin <your private repo ssh url>
     ```
 
     Naviagte to dotfiles directory & update the remote url and update the submodule:
     ```shell
-        git remote set-url origin <your dotfiles repo ssh url>
-        git submodule update
+    git remote set-url origin <your dotfiles repo ssh url>
+    git submodule update
     ```
 
 4. Symlink your dotfiles:
     **NOTE:** My dotfiles path is user's home directory i.e. `~/dotfiles`
     ```shell
-        cd
-        ln -sf dotfiles/.ssh .ssh
-        ln -sf dotfiles/.config/git/.gitconfig .gitconfig
-        ln -sf dotfiles/.config/zsh/.zshrc .zshrc
+    cd
+    ln -sf dotfiles/.ssh .ssh
+    ln -sf dotfiles/.config/git/.gitconfig .gitconfig
+    ln -sf dotfiles/.config/zsh/.zshrc .zshrc
     ```
 
     Termux:
     ```shell
-        rm -rf .termux
-        ln -sf dotfiles/.config/termux/ .termux
+    rm -rf .termux
+    ln -sf dotfiles/.config/termux/ .termux
     ```
 
     You may need to update fonts:
     ```shell
-        wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraC│
-ode/Regular/FiraCodeNerdFont-Regular.ttf
+    curl https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/FiraCodeNerdFont-Regular.ttf
     mv FiraCodeNerdFont-Regular.ttf .termux/font.ttf
     ```
 
