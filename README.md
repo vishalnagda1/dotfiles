@@ -22,7 +22,7 @@ This guide section will help you to setup the dotfile configurations in your sys
     Termux (Android):-
     ```shell
     pkg update && pkg upgrade -y
-    pkg install git openssh neovim starship zsh -y
+    pkg install git openssh neovim starship zsh tmux -y
     chsh -s zsh
     ```
 
@@ -53,7 +53,7 @@ This guide section will help you to setup the dotfile configurations in your sys
     ```
     **NOTE:** I'm using `vi` editor, you can use any of your choice.
     
-    **NOTE:** Also note that you've to create git token in order to use private repo with HTTPS and when it asks for username and password. Use your git username and token as the password.
+    **NOTE:** Also note that you've to create git [token](https://github.com/settings/tokens) in order to use private repo with HTTPS and when it asks for username and password. Use your git username and token as the password.
 
     Update the submodule:
 
@@ -90,9 +90,9 @@ This guide section will help you to setup the dotfile configurations in your sys
     ln -sf dotfiles/.config/termux/ .termux
     ```
 
-    You may need to update fonts:
+    You may need to update nerd fonts in termux:
     ```shell
-    curl https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/FiraCodeNerdFont-Regular.ttf
+    curl -O https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/FiraCodeNerdFont-Regular.ttf
     mv FiraCodeNerdFont-Regular.ttf .termux/font.ttf
     ```
 
