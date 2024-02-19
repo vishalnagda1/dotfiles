@@ -105,3 +105,14 @@ This guide section will help you to setup the dotfile configurations in your sys
     git submodule sync
     git submodule update
     ```
+
+6. Update ssh key permission and add ssh key to the agent:
+    ```shell
+    chmod 400 .ssh/id_ed25519
+    ssh-add
+    ```
+
+    To verify the added ssh key:
+    ```shell
+    ssh-add -l
+    ```
