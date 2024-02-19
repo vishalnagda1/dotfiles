@@ -27,7 +27,14 @@ This guide section will help you to setup the dotfile configurations in your sys
     chsh -s zsh
     ```
 
-    Mac & Ubuntu:-
+    Ubuntu:-
+    ```shell
+    sudo apt update -y
+    sudo apt upgrade -y
+    sudo apt install git -y
+    ```
+
+    Mac:-
     ```shell
     # Will update soon
     ```
