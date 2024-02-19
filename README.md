@@ -96,7 +96,16 @@ This guide section will help you to setup the dotfile configurations in your sys
     rm -rf .ssh
     ln -sf dotfiles/.ssh .ssh
     ln -sf dotfiles/.config/git/.gitconfig .gitconfig
+    ```
+
+    If you're using zsh shell use below command:
+    ```shell
     ln -sf dotfiles/.config/zsh/.zshrc .zshrc
+    ```
+
+    If you're using bash shell use below command:
+    ```shell
+    ln -sf dotfiles/.config/bash/.bashrc .bashrc
     ```
 
     Termux:
