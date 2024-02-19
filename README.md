@@ -31,7 +31,12 @@ This guide section will help you to setup the dotfile configurations in your sys
     ```shell
     sudo apt update -y
     sudo apt upgrade -y
-    sudo apt install git -y
+    sudo apt install git curl neovim zsh tmux -y
+    curl -O https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/FiraCodeNerdFont-Regular.ttf
+    mkdir -p ~/.local/share/fonts
+    mv FiraCodeNerdFont-Regular.ttf ~/.local/share/fonts/
+    fc-cache -fv
+    curl -sS https://starship.rs/install.sh | sh
     ```
 
     Mac:-
