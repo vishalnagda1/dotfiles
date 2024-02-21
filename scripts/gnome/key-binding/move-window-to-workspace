@@ -1,0 +1,12 @@
+# This script is to move window from one workspace to another
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-1 "['<Ctrl><Alt>1']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-2 "['<Ctrl><Alt>2']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-3 "['<Ctrl><Alt>3']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4 "['<Ctrl><Alt>4']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-5 "['<Ctrl><Alt>5']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-6 "['<Ctrl><Alt>6']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-7 "['<Ctrl><Alt>7']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-8 "['<Ctrl><Alt>8']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-9 "['<Ctrl><Alt>9']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-10 "['<Ctrl><Alt>0']"
+
