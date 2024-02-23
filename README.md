@@ -46,9 +46,10 @@ This guide section will help you to setup the dotfile configurations in your sys
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
     # install Fira Code Nerd Font
-    wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/FiraCodeNerdFont-Regular.ttf
+    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.zip
     mkdir -p ~/.local/share/fonts
-    mv FiraCodeNerdFont-Regular.ttf ~/.local/share/fonts/
+    unzip FiraCode.zip -d ~/.local/share/fonts
+    rm ~/.local/share/fonts/README.md ~/.local/share/fonts/LICENSE FiraCode.zip
     fc-cache -fv
 
     # install starship
