@@ -29,18 +29,29 @@ This guide section will help you to setup the dotfile configurations in your sys
 
     Ubuntu:-
     ```shell
+    # update, upgrade and autoclean packages
     sudo apt update -y
     sudo apt upgrade -y
     sudo apt autoremove
+
+    # install required packages
     sudo apt install git curl wget neovim zsh tmux -y
+
+    # change default shell to zsh
     chsh -s $(which zsh)
+
+    # install oh my zsh framework and its plugins
     sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+    # install Fira Code Nerd Font
     wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/FiraCodeNerdFont-Regular.ttf
     mkdir -p ~/.local/share/fonts
     mv FiraCodeNerdFont-Regular.ttf ~/.local/share/fonts/
     fc-cache -fv
+
+    # install starship
     curl -sS https://starship.rs/install.sh | sh
     ```
 
