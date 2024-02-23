@@ -34,6 +34,7 @@ This guide section will help you to setup the dotfile configurations in your sys
     sudo apt autoremove
     sudo apt install git curl wget neovim zsh tmux -y
     chsh -s $(which zsh)
+    sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
     wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/FiraCodeNerdFont-Regular.ttf
     mkdir -p ~/.local/share/fonts
     mv FiraCodeNerdFont-Regular.ttf ~/.local/share/fonts/
