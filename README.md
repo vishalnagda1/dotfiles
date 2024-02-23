@@ -51,6 +51,7 @@ This guide section will help you to setup the dotfile configurations in your sys
     unzip FiraCode.zip -d ~/.local/share/fonts
     rm ~/.local/share/fonts/README.md ~/.local/share/fonts/LICENSE FiraCode.zip
     fc-cache -fv
+    echo -e "Testing Nerf Fonts: \uf00c \uf0e7 \uf304"
 
     # install starship
     curl -sS https://starship.rs/install.sh | sh
