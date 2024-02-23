@@ -31,6 +31,7 @@ This guide section will help you to setup the dotfile configurations in your sys
     ```shell
     sudo apt update -y
     sudo apt upgrade -y
+    sudo apt autoremove
     sudo apt install git curl wget neovim zsh tmux -y
     wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/FiraCodeNerdFont-Regular.ttf
     mkdir -p ~/.local/share/fonts
