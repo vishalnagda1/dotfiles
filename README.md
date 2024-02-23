@@ -145,14 +145,7 @@ This guide section will help you to setup the dotfile configurations in your sys
     mv FiraCodeNerdFont-Regular.ttf .termux/font.ttf
     ```
 
-5. Resync and update the submodule:
-    Navigate to dotfile directory use below commands:
-    ```shell
-    git submodule sync
-    git submodule update
-    ```
-
-6. Update ssh key permission and add ssh key to the agent:
+5. Update ssh key permission and add ssh key to the agent:
     ```shell
     chmod 400 .ssh/id_ed25519
     ssh-add
@@ -161,4 +154,18 @@ This guide section will help you to setup the dotfile configurations in your sys
     To verify the added ssh key:
     ```shell
     ssh-add -l
+    ```
+
+6. Resync and update the submodule:
+    Navigate to dotfile directory use below commands:
+    ```shell
+    git submodule sync
+    git submodule update
+    ```
+
+7. Install additional GIU softwares (Optional):
+    Ubuntu:
+    ```shell
+    sudo snap install --classic code
+    sudo snap install postman
     ```
