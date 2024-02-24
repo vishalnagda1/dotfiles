@@ -35,7 +35,7 @@ This guide section will help you to setup the dotfile configurations in your sys
     sudo apt autoremove
 
     # install required packages
-    sudo apt install git curl wget neovim zsh tmux -y
+    sudo apt install build-essential git curl wget neovim zsh tmux -y
 
     # change default shell to zsh
     chsh -s $(which zsh)
@@ -55,6 +55,21 @@ This guide section will help you to setup the dotfile configurations in your sys
 
     # install starship
     curl -sS https://starship.rs/install.sh | sh
+
+    # install kitty terminal
+    curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+    # Add Kitty to PATH
+    sudo ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten /usr/local/bin/
+    # Create Desktop And Application Shortcuts
+    cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
+    # If you want to open text files and images in kitty via your file manager also add the kitty-open.desktop file
+    cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/
+    # Update the paths to the kitty and its icon in the kitty.desktop file(s)
+    sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
+    sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
+    # Kitty config
+    mkdir -p ~/.config/kitty/
+    ln -sf ~/dotfiles/.config/kitty/kitty.conf ~/.config/kitty/
     ```
 
     Mac:-
