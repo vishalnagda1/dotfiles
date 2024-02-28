@@ -162,6 +162,7 @@ This guide section will help you to setup the dotfile configurations in your sys
 
 5. Update ssh key permission and add ssh key to the agent:
     ```shell
+    cd
     chmod 400 .ssh/id_ed25519
     ssh-add
     ```
@@ -174,6 +175,7 @@ This guide section will help you to setup the dotfile configurations in your sys
 6. Resync and update the submodule:
     Navigate to dotfile directory use below commands:
     ```shell
+    git checkout .
     git submodule sync
     git submodule update
     ```
