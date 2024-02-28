@@ -79,7 +79,7 @@ This guide section will help you to setup the dotfile configurations in your sys
 
 2. Clone the repo at your desired location
     ```shell
-    git clone https://github.com/vishalnagda1/dotfiles.git --recursive
+    git clone https://github.com/shubhamGTS/dotfiles.git --recursive
     ```
 
     **NOTE:** Currently we're using HTTPS to clone the repo. We will update the remote to SSH later, after setting up the ssh config.
