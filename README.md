@@ -186,3 +186,9 @@ This guide section will help you to setup the dotfile configurations in your sys
     sudo snap install --classic code
     sudo snap install postman
     ```
+8. OPTIONAL - Setting up Ollama (Local AI Chat)
+   Ubuntu
+   ```shell
+   curl -fsSL https://ollama.com/install.sh | sh
+   ```
+
