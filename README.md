@@ -163,7 +163,9 @@ This guide section will help you to setup the dotfile configurations in your sys
 5. Update ssh key permission and add ssh key to the agent:
     ```shell
     cd
-    chmod 400 .ssh/id_ed25519
+    chmod 400 ~/.ssh/id_ed25519
+    chown $USER ~/.ssh/config
+    chmod 644 ~/.ssh/config
     ssh-add
     ```
 
