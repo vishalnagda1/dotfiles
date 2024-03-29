@@ -35,7 +35,7 @@ This guide section will help you to setup the dotfile configurations in your sys
     sudo apt autoremove
 
     # install required packages
-    sudo apt install build-essential git curl wget neovim zsh tmux pass pass-extension-otp -y
+    sudo apt install build-essential git curl wget neovim zsh tmux ripgrep pass pass-extension-otp -y
 
     # change default shell to zsh
     chsh -s $(which zsh)
