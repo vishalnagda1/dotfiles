@@ -562,7 +562,7 @@ require('lazy').setup({
                 typeCheckingMode = 'basic',
                 useLibraryCodeForTypes = true,
                 diagnosticMode = 'openFilesOnly', -- "workspace",
-                -- autoImportCompletions = true,
+                autoImportCompletions = true,
               },
             },
           },
