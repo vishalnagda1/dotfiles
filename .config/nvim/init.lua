@@ -540,15 +540,8 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         -- gopls = {},
-        ruff_lsp = {
-          init_options = {
-            settings = {
-              -- Any extra CLI arguments for `ruff` go here.
-              args = {},
-            },
-          },
-        },
         --[[ pyright = {
+        ruff_lsp = {},
           settings = {
             python = {
               analysis = {
