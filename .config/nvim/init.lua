@@ -559,7 +559,7 @@ require('lazy').setup({
             python = {
               analysis = {
                 autoSearchPaths = true,
-                typeCheckingMode = 'basic',
+                typeCheckingMode = 'off',
                 useLibraryCodeForTypes = true,
                 diagnosticMode = 'openFilesOnly', -- "workspace",
                 autoImportCompletions = true,
