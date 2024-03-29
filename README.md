@@ -171,9 +171,9 @@ This guide section will help you to setup the dotfile configurations in your sys
 
     Linking config of nvim:
     ```shell
-    mkdir -p ~/.config/nvim/
-    cd ~/.config/nvim/
-    ln -sf ~/dotfiles/.config/nvim/init.vim init.vim
+    mkdir -p ~/.config
+    cd ~/.config
+    ln -sf ~/dotfiles/.config/nvim nvim
     ```
 
     Termux:
