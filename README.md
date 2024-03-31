@@ -19,7 +19,8 @@ This repo is containing the dotfiles which are related to it's author and you ca
 This guide section will help you to setup the dotfile configurations in your system. You have to follow commands based on your system type. If system type is not menthioned then those commands are generic and can be used in any system.
 
 1. Install required packages
-    Termux (Android):-
+    
+    **Termux (Android):-**
     ```shell
     pkg update -y
     pkg upgrade -y
@@ -27,7 +28,7 @@ This guide section will help you to setup the dotfile configurations in your sys
     chsh -s zsh
     ```
 
-    Ubuntu:-
+    **Ubuntu:-**
     ```shell
     # update, upgrade and autoclean packages
     sudo apt update -y
@@ -100,9 +101,16 @@ This guide section will help you to setup the dotfile configurations in your sys
 
     ```
 
-    Mac:-
+    **Mac:-**
+    
+    Install the command line tool (A dialog will appear asking if you’d like to install the tools. Click Install and the package will download and install itself.)
+
     ```shell
-    # Will update soon
+    xcode-select --install
+    ```
+    Install Homebrew
+    ```shell
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     ```
 
 2. Clone the repo at your desired location
@@ -136,18 +144,25 @@ This guide section will help you to setup the dotfile configurations in your sys
     git submodule update
     ```
 
-    Now navigte to your private repo:
-    ```shell
-    cd Private
-    git checkout main
-    git remote set-url origin <your private repo ssh url>
-    ```
+    Skip below steps if you wish to continue with HTTPS repo URL
+    
+    - Now navigte to your private repo:
+        ```shell
+        cd Private
+        git checkout main
+        git remote set-url origin <your private repo ssh url>
+        ```
 
-    Naviagte to dotfiles directory & update the remote url from HTTPS to SSH:
-    ```shell
-    cd ..
-    git remote set-url origin <your dotfiles repo ssh url>
-    ```
+    - Naviagte to dotfiles directory & update the remote url from HTTPS to SSH:
+        ```shell
+        cd ..
+        git remote set-url origin <your dotfiles repo ssh url>
+        ```
+    - Replace HTTPS git repo URL with SSH URL of private repo in .gitmodules
+    
+        ```shell
+        vi .gitmodules
+        ```
 
 4. Symlink your dotfiles:
     **NOTE:** My dotfiles path is user's home directory i.e. `~/dotfiles`
@@ -169,11 +184,20 @@ This guide section will help you to setup the dotfile configurations in your sys
     ln -sf dotfiles/.config/bash/.bashrc .bashrc
     ```
 
+    Link shell profile:
+    - If you're using zsh:
+        ```shell
+        ln -sf dotfiles/.zprofile .zprofile
+        ```
+    - If you're using bash:
+        ```shell
+        ln -sf dotfiles/.profile .profile
+        ```
+
     Linking config of nvim:
     ```shell
-    mkdir -p ~/.config
-    cd ~/.config
-    ln -sf ~/dotfiles/.config/nvim nvim
+    mkdir -p ${HOME}/.config
+    ln -sf ${MY_DOTFILES_DIR}/.config/nvim ${HOME}/.config/nvim 
     ```
 
     Termux:
@@ -205,7 +229,7 @@ This guide section will help you to setup the dotfile configurations in your sys
 6. Resync and update the submodule:
     Navigate to dotfile directory use below commands:
     ```shell
-    git checkout .
+    cd $MY_DOTFILES_DIR
     git submodule sync
     git submodule update
     ```
