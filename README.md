@@ -36,69 +36,10 @@ This guide section will help you to setup the dotfile configurations in your sys
     sudo apt autoremove
 
     # install required packages
-    sudo apt install build-essential git curl wget neovim zsh tmux ripgrep pass pass-extension-otp -y
+    sudo apt install git -y
 
     # change default shell to zsh
     chsh -s $(which zsh)
-
-    # install oh my zsh framework and its plugins
-    sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-    # install Fira Code Nerd Font
-    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.zip
-    mkdir -p ~/.local/share/fonts
-    unzip FiraCode.zip -d ~/.local/share/fonts
-    rm ~/.local/share/fonts/README.md ~/.local/share/fonts/LICENSE FiraCode.zip
-    fc-cache -fv
-    echo -e "Testing Nerf Fonts: \uf00c \uf0e7 \uf304"
-
-    # install starship
-    curl -sS https://starship.rs/install.sh | sh
-
-    # install kitty terminal
-    curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-    # Add Kitty to PATH
-    sudo ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten /usr/local/bin/
-    # Create Desktop And Application Shortcuts
-    cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
-    # If you want to open text files and images in kitty via your file manager also add the kitty-open.desktop file
-    cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/
-    # Update the paths to the kitty and its icon in the kitty.desktop file(s)
-    sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
-    sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
-    # Kitty config
-    mkdir -p ~/.config/kitty/
-    ln -sf ~/dotfiles/.config/kitty/kitty.conf ~/.config/kitty/
-
-    sudo mkdir -p /etc/apt/keyrings
-    wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
-    echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
-    sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
-    sudo apt update
-    sudo apt install -y eza
-    
-    sudo apt install fd-find
-    ln -s $(which fdfind) ~/.local/bin/fd
-    sudo apt install fzf
-    
-    wget -qO - https://pkg.pujol.io/debian/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/pujol.io.gpg >/dev/null
-    echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/pujol.io.gpg] https://pkg.pujol.io/debian/repo all main' | sudo tee /etc/apt/sources.list.d/pkg.pujol.io.list
-    sudo apt-get update
-    sudo apt-get install pass-extension-import
-    
-    LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-    curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-    tar xf lazygit.tar.gz lazygit
-    sudo install lazygit /usr/local/bin
-    lazygit --version
-    
-    asdf plugin add lazydocker https://github.com/comdotlinux/asdf-lazydocker.git
-    asdf install lazydocker latest
-    asdf global lazydocker latest
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh  # node version manager
-
     ```
 
     **Mac:-**
@@ -107,10 +48,6 @@ This guide section will help you to setup the dotfile configurations in your sys
 
     ```shell
     xcode-select --install
-    ```
-    Install Homebrew
-    ```shell
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     ```
 
 2. Clone the repo at your desired location
@@ -234,15 +171,87 @@ This guide section will help you to setup the dotfile configurations in your sys
     git submodule update
     ```
 
-7. Install additional GIU softwares (Optional):
-    Ubuntu:
-    ```shell
-    sudo snap install --classic code
-    sudo snap install postman
-    ```
+7. Install additional softwares:
+
+    **Ubuntu:**
+    - Install required dependencies:
+        ```shell
+        sudo apt install build-essential git curl wget zsh pass pass-extension-otp neovim zsh tmux ripgrep pass pass-extension-otp
+
+
+        # install oh my zsh framework and its plugins
+        sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+        git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+        # install Fira Code Nerd Font
+        wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.zip
+        mkdir -p ~/.local/share/fonts
+        unzip FiraCode.zip -d ~/.local/share/fonts
+        rm ~/.local/share/fonts/README.md ~/.local/share/fonts/LICENSE FiraCode.zip
+        fc-cache -fv
+        echo -e "Testing Nerf Fonts: \uf00c \uf0e7 \uf304"
+
+        # install starship
+        curl -sS https://starship.rs/install.sh | sh
+
+        # install kitty terminal
+        curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+        # Add Kitty to PATH
+        sudo ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten /usr/local/bin/
+        # Create Desktop And Application Shortcuts
+        cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
+        # If you want to open text files and images in kitty via your file manager also add the kitty-open.desktop file
+        cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/
+        # Update the paths to the kitty and its icon in the kitty.desktop file(s)
+        sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
+        sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
+        # Kitty config
+        mkdir -p ~/.config/kitty/
+        ln -sf ~/dotfiles/.config/kitty/kitty.conf ~/.config/kitty/
+
+        sudo mkdir -p /etc/apt/keyrings
+        wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
+        echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
+        sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+        sudo apt update
+        sudo apt install -y eza
+        
+        sudo apt install fd-find
+        ln -s $(which fdfind) ~/.local/bin/fd
+        sudo apt install fzf
+        
+        wget -qO - https://pkg.pujol.io/debian/gpgkey | gpg --dearmor | sudo tee /usr/share/keyrings/pujol.io.gpg >/dev/null
+        echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/pujol.io.gpg] https://pkg.pujol.io/debian/repo all main' | sudo tee /etc/apt/sources.list.d/pkg.pujol.io.list
+        sudo apt-get update
+        sudo apt-get install pass-extension-import
+        
+        LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+        curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+        tar xf lazygit.tar.gz lazygit
+        sudo install lazygit /usr/local/bin
+        lazygit --version
+        
+        asdf plugin add lazydocker https://github.com/comdotlinux/asdf-lazydocker.git
+        asdf install lazydocker latest
+        asdf global lazydocker latest
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh  # node version manager
+
+
+        sudo snap install --classic code
+        sudo snap install postman
+        ```
+    
+    **Mac:**
+    - Install Homebrew
+        ```shell
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        ```
 
 8. Install Docker CLI
+
    Ubuntu:
+   
    Run the following command to uninstall all conflicting packages:
    ```shell
    for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
