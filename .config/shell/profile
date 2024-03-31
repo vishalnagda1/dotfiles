@@ -1,2 +1,184 @@
+#!/bin/zsh
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# profile file. Runs on login. Environmental variables are set here.
+
+# If you don't plan on reverting to bash, you can remove the link in ~/.profile
+# to clean up.
+
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+#export XINITRC="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xinitrc"
+#export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
+
+# Create ~/.local/bin if initial setup
+mkdir -p $HOME/.local/bin
+# Adds `~/.local/bin` to $PATH
+export PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':' -)"
+# Adds `NPM_CONFIG_PREFIX` to $PATH
+export PATH="$PATH:${XDG_DATA_HOME}/npm/bin"
+
+# ASDF related path
+export ASDF_CONFIG_FILE=${XDG_CONFIG_HOME}/asdf/asdfrc
+export ASDF_DATA_DIR=${XDG_DATA_HOME}/asdf
+
+export ASDF_PYTHON_DEFAULT_PACKAGES_FILE=${XDG_CONFIG_HOME}/pip/default-python-packages
+export ASDF_NPM_DEFAULT_PACKAGES_FILE=${XDG_CONFIG_HOME}/npm/default-npm-packages
+export ASDF_GEM_DEFAULT_PACKAGES_FILE=${XDG_CONFIG_HOME}/gem/default-gems
+
+# Adds asdf installed binaries to $PATH
+export PATH="$ASDF_DATA_DIR/bin:$ASDF_DATA_DIR/shims:$PATH"
+
+# Golang environment variables, default GOPATH is ~/go
+export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
+export GOBIN="$GOPATH/bin"
+export GOTESTS_TEMPLATE="testify"
+# Adds `GOBIN` to $PATH
+export PATH="$PATH:$GOBIN"
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+
+# Default programs:
+export EDITOR="nvim"
+export TERMINAL="st"
+export BROWSER="firefox"
+
+# ~/ Clean-up:
+export NOTMUCH_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/notmuch-config"
+export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
+export LESSHISTFILE="-"
+export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
+export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/shell/inputrc"
+export EDITRC="${XDG_CONFIG_HOME:-$HOME/.config}/shell/editrc"
+export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+export ANTIDOTE_HOME="${XDG_CACHE_HOME/antidote}"
+#export ALSA_CONFIG_PATH="$XDG_CONFIG_HOME/alsa/asoundrc"
+#export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
+export WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes/default"
+export KODI_DATA="${XDG_DATA_HOME:-$HOME/.local/share}/kodi"
+export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/password-store"
+export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export ANDROID_SDK_HOME="$HOME/.android"
+# export ANDROID_SDK_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"
+export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
+export ANSIBLE_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/ansible/ansible.cfg"
+export UNISON="${XDG_DATA_HOME:-$HOME/.local/share}/unison"
+export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
+export WEECHAT_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/weechat"
+export GIT_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/git"
+export AWS_SHARED_CREDENTIALS_FILE="${XDG_CONFIG_HOME}/aws/credentials"
+export AWS_CONFIG_FILE="${XDG_CONFIG_HOME}/aws/config"
+export GNUPGHOME="${XDG_CONFIG_HOME}/gnupg"
+export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonstartup.py"
+export IPYTHONDIR="${XDG_CONFIG_HOME}/python/ipython"
+export PYLINTHOME="${XDG_CACHE_HOME}/pylint"
+export PYTHONHISTORY="${XDG_DATA_HOME}/python"
+export RIPGREP_CONFIG_PATH="${XDG_CONFIG_HOME}/.ripgreprc"
+export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/npm/npmrc"
+# export NPM_CONFIG_PREFIX="${XDG_DATA_HOME}/npm" # NVM doesn't support it
+export NODE_REPL_HISTORY="${XDG_DATA_HOME}/node_repl_history"
+export npm_config_devdir="${XDG_CACHE_HOME}/node-gyp" # For node-gyp
+export RUSTUP_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/rustup"
+export MYVIMRC="${XDG_CONFIG_HOME:-$HOME/.config}/nvim/lua/init.lua"
+export MYVIMRCLSP="${XDG_CONFIG_HOME:-$HOME/.config}/nvim/lua/initlsp.lua"
+# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+export MBSYNCRC="${XDG_CONFIG_HOME:-$HOME/.config}/isync/mbsyncrc"
+export SVDIR="/run/runit/service"
+
+# Clipmenu
+export CM_DEBUG=1
+export CM_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/clipmenu"
+export CM_MAX_CLIPS=200
+export CM_SELECTIONS="clipboard primary"
+export CM_IGNORE_WINDOW="dmenu"
+
+# Dotfile directory
+export MY_DOTFILES_DIR="$HOME/dotfiles"
+
+# VimWiki
+export VIMWIKI_DIR="$HOME/Dropbox/vimWiki"
+export VIMWIKI_DIR_PERSONAL="${VIMWIKI_DIR}/Personal/wiki/"
+export VIMWIKI_DIR_WORK="${VIMWIKI_DIR}/Work/wiki/"
+export VIMWIKI_DIR_INTERVIEWS="${VIMWIKI_DIR}/InterviewsTaken/wiki/"
+export VIMWIKI_DIR_DISCUSSIONS="${VIMWIKI_DIR}/Discussions/wiki/"
+export VIMWIKI_DIR_ACTIVE_TASKS="${VIMWIKI_DIR}/ActiveTasks/wiki/"
+
+export MOST_USED_VIMWIKI_DIR="${VIMWIKI_DIR_WORK}"
+
+# Neorg
+export NEORG_DIR="$HOME/Dropbox/Neorg"
+export NEORG_DIR_PERSONAL="${NEORG_DIR}/Personal"
+export NEORG_DIR_WORK="${NEORG_DIR}/Work"
+export NEORG_DIR_INTERVIEWS="${NEORG_DIR}/InterviewsTaken"
+export NEORG_DIR_DISCUSSIONS="${NEORG_DIR}/Discussions"
+export NEORG_DIR_ACTIVE_TASKS="${NEORG_DIR}/ActiveTasks"
+
+export MOST_USED_NEORG_DIR="${NEORG_DIR_WORK}"
+
+# Tmux default session file
+export TMUX_DEFAULT_SESSION_FILE="$HOME/.config/tmux/private/default-session.json"
+
+# Taskwarrior
+export TASKRC="$HOME/.config/taskwarrior/task/taskrc"
+export TASKDATA="$HOME/Dropbox/taskwarrior"
+export BUGWARRIORRC="$HOME/.config/taskwarrior/bugwarrior/bugwarriorrc"
+export TIMEWARRIORDB="$HOME/Dropbox/timewarrior"
+
+# Dadbod dbui queries
+export DB_QUERIES_PATH="$HOME/Dropbox/DBQueries"
+export DADBOD_DB_QUERIES_PATH="$DB_QUERIES_PATH/db_ui_queries"
+
+# Rest-nvim http files
+export REST_NVIM_COLLECTION_PATH="$HOME/Dropbox/rest_nvim_collection/collections"
+
+
+# Other program settings:
+export DICS="/usr/share/stardict/dic/"
+# export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
+export FZF_DEFAULT_OPTS="--layout=reverse --height 40%  --inline-info"
+export FZF_DEFAULT_COMMAND='fd --hidden --follow --type f'
+export BC_ENV_ARGS=$HOME/.config/bc/bcrc
+
+# export LESS=-R
+export LESS="-XFR"
+export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
+export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
+export LESS_TERMCAP_me="$(printf '%b' '[0m')"
+export LESS_TERMCAP_so="$(printf '%b' '[01;44;33m')"
+export LESS_TERMCAP_se="$(printf '%b' '[0m')"
+export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
+export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
+export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
+export QT_QPA_PLATFORMTHEME="gtk2"	# Have QT use gtk2 theme.
+export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
+export AWT_TOOLKIT="MToolkit wmname LG3D"	#May have to install wmname
+export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
+
+
+# Adds android command line tools binaries to path
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# AUTOSSH variables
+export AUTOSSH_DEBUG=7
+export AUTOSSH_LOGLEVEL=7
+export AUTOSSH_POLL=120
+export AUTOSSH_LOGFILE="${HOME}/.cache/autossh.log"
+export AUTOSSH_GATETIME=0
+
+export SSH_LOGFILE="${HOME}/.cache/ssh.log"
+export SSH_TUNNEL_CONFIG="${HOME}/.ssh/tunnel-config"
+
+
+# VALE variables
+export VALE_CONFIG_PATH="${HOME}/.config/vale/vale.ini"
+
+# Initialising golang version manager
+# Initializing gvm, reset GOBIN, GOROOT, and GOPATH
+# [ -f "$HOME/.gvm/scripts/gvm" ] && source "$HOME/.gvm/scripts/gvm"
+
+# Loads support for direnv to load .envrc defined in specific directory
+command -v direnv > /dev/null && eval "$(direnv hook zsh)"
