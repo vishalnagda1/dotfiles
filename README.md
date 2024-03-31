@@ -37,9 +37,6 @@ This guide section will help you to setup the dotfile configurations in your sys
 
     # install required packages
     sudo apt install git -y
-
-    # change default shell to zsh
-    chsh -s $(which zsh)
     ```
 
     **Mac:-**
@@ -240,6 +237,9 @@ This guide section will help you to setup the dotfile configurations in your sys
 
         sudo snap install --classic code
         sudo snap install postman
+
+        # change default shell to zsh
+        chsh -s $(which zsh)
         ```
     
     **Mac:**
@@ -251,7 +251,7 @@ This guide section will help you to setup the dotfile configurations in your sys
 8. Install Docker CLI
 
    Ubuntu:
-   
+
    Run the following command to uninstall all conflicting packages:
    ```shell
    for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
