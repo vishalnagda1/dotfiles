@@ -195,6 +195,10 @@ esac
 export MACHINE=$machine
 
 if [[ $MACHINE == "Mac" ]]; then
+   # Load homebrew on shell satart
    eval "$(/opt/homebrew/bin/brew shellenv)"
+
+   # add asdf homebrew path
+   . /opt/homebrew/opt/asdf/libexec/asdf.sh
 fi
 
