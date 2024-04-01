@@ -176,21 +176,7 @@ This guide section will help you to setup the dotfile configurations in your sys
     **Ubuntu:**
     - Install required dependencies:
         ```shell
-        sudo apt install build-essential git curl wget zsh pass pass-extension-otp neovim zsh tmux ripgrep pass pass-extension-otp
-
-
-        # install oh my zsh framework and its plugins
-        sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-        git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-        # install Fira Code Nerd Font
-        wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.zip
-        mkdir -p ~/.local/share/fonts
-        unzip FiraCode.zip -d ~/.local/share/fonts
-        rm ~/.local/share/fonts/README.md ~/.local/share/fonts/LICENSE FiraCode.zip
-        fc-cache -fv
-        echo -e "Testing Nerf Fonts: \uf00c \uf0e7 \uf304"
+        sudo apt install build-essential curl zsh wget tmux ripgrep pass pass-extension-otp
 
         # install starship
         curl -sS https://starship.rs/install.sh | sh
@@ -250,6 +236,49 @@ This guide section will help you to setup the dotfile configurations in your sys
         ```shell
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         ```
+    - Install required dependencies:
+        ```shell
+        brew install wget tmux ripgrep lf fzf eza asdf
+        eval "$(fzf --zsh)"
+        ```
+    - Install starship
+        ```shell
+        brew install starship
+        ```
+    
+    **Cross Platform:**
+    - Install oh my zsh:
+        ```shell
+        # install oh my zsh framework and its plugins
+        sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+        git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+        ```
+    - Install Neovim:
+        ```shell
+        asdf plugin add neovim
+        asdf install neovim nightly
+        asdf global neovim nightly
+        ```
+    - Install Nerd fonts:
+        - Download the font:
+            ```shell
+            wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.zip
+            ```
+        - Unzip and move fonts to respective directory:
+            - Ubuntu:
+                ```shell
+                mkdir -p ~/.local/share/fonts
+                unzip FiraCode.zip -d ~/.local/share/fonts
+                rm ~/.local/share/fonts/README.md ~/.local/share/fonts/LICENSE FiraCode.zip
+                fc-cache -fv
+                echo -e "Testing Nerf Fonts: \uf00c \uf0e7 \uf304"
+                ```
+            - Mac: 
+                ```shell
+                unzip FiraCode.zip -d /Library/Fonts/
+                rm /Library/Fonts/README.md /Library/Fonts/LICENSE FiraCode.zip
+                ```
 
 8. Install Docker CLI
 
