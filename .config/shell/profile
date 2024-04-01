@@ -182,3 +182,19 @@ export VALE_CONFIG_PATH="${HOME}/.config/vale/vale.ini"
 
 # Loads support for direnv to load .envrc defined in specific directory
 command -v direnv > /dev/null && eval "$(direnv hook zsh)"
+
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     machine=Linux;;
+    Darwin*)    machine=Mac;;
+    CYGWIN*)    machine=Cygwin;;
+    MINGW*)     machine=MinGw;;
+    *)          machine="UNKNOWN:${unameOut}"
+esac
+
+export MACHINE=$machine
+
+if [[ $MACHINE == "Mac" ]]; then
+   eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
