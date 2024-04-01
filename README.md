@@ -110,18 +110,21 @@ This guide section will help you to setup the dotfile configurations in your sys
 
     If you're using zsh shell use below command:
     ```shell
-    ln -sf dotfiles/.config/zsh/.zshrc .zshrc
+    ln -sf ~/dotfiles/.config/zsh/.zshrc ~/.zshrc
     ```
 
     If you're using bash shell use below command:
     ```shell
-    ln -sf dotfiles/.config/bash/.bashrc .bashrc
+    ln -sf ~/dotfiles/.config/zsh/.bashrc ~/.bashrc
     ```
 
     Link shell profile:
     - If you're using zsh:
         ```shell
-        ln -sf dotfiles/.zprofile .zprofile
+        ln -sf ~/dotfiles/.zprofile ~/.zprofile
+        # as we mentioned our ZDOTDIR at ~/.config/zsh
+        mkdir -p ~/.config/zsh
+        ln -sf ~/.zshrc ~/.config/zsh/.zshrc
         ```
     - If you're using bash:
         ```shell
