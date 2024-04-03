@@ -181,21 +181,6 @@ This guide section will help you to setup the dotfile configurations in your sys
         # install starship
         curl -sS https://starship.rs/install.sh | sh
 
-        # install kitty terminal
-        curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-        # Add Kitty to PATH
-        sudo ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten /usr/local/bin/
-        # Create Desktop And Application Shortcuts
-        cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
-        # If you want to open text files and images in kitty via your file manager also add the kitty-open.desktop file
-        cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/
-        # Update the paths to the kitty and its icon in the kitty.desktop file(s)
-        sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
-        sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
-        # Kitty config
-        mkdir -p ~/.config/kitty/
-        ln -sf ~/dotfiles/.config/kitty/kitty.conf ~/.config/kitty/
-
         sudo mkdir -p /etc/apt/keyrings
         wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
         echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
@@ -278,6 +263,27 @@ This guide section will help you to setup the dotfile configurations in your sys
                 ```shell
                 unzip FiraCode.zip -d /Library/Fonts/
                 rm /Library/Fonts/README.md /Library/Fonts/LICENSE FiraCode.zip
+                ```
+        - Kitty Terminal:
+            ```shell
+            curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+            ```
+
+            Additional commands for Linux:
+            - Ubuntu:
+                ```shell
+                # Add Kitty to PATH
+                sudo ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten /usr/local/bin/
+                # Create Desktop And Application Shortcuts
+                cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
+                # If you want to open text files and images in kitty via your file manager also add the kitty-open.desktop file
+                cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/
+                # Update the paths to the kitty and its icon in the kitty.desktop file(s)
+                sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
+                sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
+                # Kitty config
+                mkdir -p ~/.config/kitty/
+                ln -sf ~/dotfiles/.config/kitty/kitty.conf ~/.config/kitty/
                 ```
 
 8. Install Docker CLI
