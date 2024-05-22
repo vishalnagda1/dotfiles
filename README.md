@@ -291,6 +291,11 @@ This guide section will help you to setup the dotfile configurations in your sys
                 ln -sf ~/dotfiles/.config/kitty/kitty.conf ~/.config/kitty/
                 ```
 
+        - Install Pyenv
+            ```shell
+            curl https://pyenv.run | bash
+            ```
+
 8. Install Docker CLI
 
    Ubuntu:
