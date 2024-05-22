@@ -71,7 +71,6 @@ ZSH_THEME="jonathan"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting asdf)
 
 source $ZSH/oh-my-zsh.sh
@@ -103,14 +102,55 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 eval "$(starship init zsh)"
-
 export PATH="$HOME/.local/bin:$PATH"
+export PATH=/usr/local/cuda/bin:$PATH
+export PATH="$HOME/dotfiles/.local/bin:$PATH"
 
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/home/vishal/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+if (( $+commands[eza] )); then
+    alias ls="eza -b --git --icons"
+    alias recent="eza -b --git -snew --icons"
+    tree () {
+        local depth dirsonly
+        while [[ $1 == -L || $1 == -d ]]; do
+            if [[ $1 == -L ]]; then
+                depth=(-L $2)
+                shift 2
+            fi
+            if [[ $1 == -d ]]; then
+                dirsonly=-D
+                shift
+            fi
+        done
+        eza -bT --icons --git $depth $dirsonly $@
+    }
+else
+    alias ls="ls --color=auto"
+    alias tree="tree -C"
+    alias recent="ls -rt"
+fi
+
+alias lsa="ls -alh"
+
+alias lsl="ls -l"
+alias dokra="lazydocker"
+alias gita="lazygit"
+alias tngpt="cd ~/dev/tngpt/"
+alias note="cd ~/note-taker/2024-may/"
+alias dot="cd ~/dotfiles"
+alias datasense="cd ~/dev/datasense"
+alias zshrc="nvim ~/.zshrc"
+alias vimconfig="nvim ~/.config/nvim/init.lua"
+export PATH="$(go env GOPATH)/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# asdf path
-. "$HOME/.asdf/asdf.sh"
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
