@@ -202,6 +202,9 @@ This guide section will help you to setup the dotfile configurations in your sys
         tar xf lazygit.tar.gz lazygit
         sudo install lazygit /usr/local/bin
         lazygit --version
+
+        # install asdf package manager
+        git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
         
         asdf plugin add lazydocker https://github.com/comdotlinux/asdf-lazydocker.git
         asdf install lazydocker latest
@@ -238,6 +241,8 @@ This guide section will help you to setup the dotfile configurations in your sys
         sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
         git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+        rm -rf ~/.zshrc.pre-oh-my-zsh ~/.zshrc
+        ln -sf ~/dotfiles/.config/zsh/.zshrc ~/.zshrc
         ```
     - Install Neovim:
         ```shell
