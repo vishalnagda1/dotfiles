@@ -863,6 +863,46 @@ require('lazy').setup({
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   -- { import = 'custom.plugins' },
+  --
+  -- Additional plugins
+  -- To display tab like view
+  { 'akinsho/bufferline.nvim', version = '*', dependencies = 'nvim-tree/nvim-web-devicons', config = true, lazy = false },
+
+  -- To display context, like where exactly where I am in the heirarchy. based on treesitter
+  -- {
+  --   'nvim-treesitter/nvim-treesitter-context',
+  --   event = 'BufRead',
+  --   dependencies = { 'nvim-treesitter/nvim-treesitter' },
+  --   config = true,
+  -- },
+
+  -- It will show the breadcrumb based on lsp
+  {
+    'glepnir/lspsaga.nvim',
+    event = 'LspAttach',
+    config = true,
+  },
+  {
+    'akinsho/toggleterm.nvim',
+    version = '*',
+    config = true,
+    keys = {
+      { '<c-q>', [[:ToggleTerm<cr>]], silent = true },
+      { '<c-q>', [[<c-\><c-n>:ToggleTerm<cr>]], mode = 't', silent = true },
+    },
+  },
+  {
+    'lmburns/lf.nvim',
+    init = function()
+      vim.g.lf_netrw = 1
+    end,
+    cmd = { 'Lf' },
+    config = true,
+    opts = require('plugins.configs.misc').lf,
+    dependencies = 'toggleterm.nvim',
+  },
+  --
+  -- Add plugins above this line.
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
