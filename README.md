@@ -176,7 +176,7 @@ This guide section will help you to setup the dotfile configurations in your sys
     **Ubuntu:**
     - Install required dependencies:
         ```shell
-        sudo apt install build-essential curl zsh wget tmux ripgrep pass pass-extension-otp
+        sudo apt install build-essential curl zsh wget tmux ripgrep pass pass-extension-otp timewarrior taskwarrior
 
         # install starship
         curl -sS https://starship.rs/install.sh | sh
@@ -294,6 +294,17 @@ This guide section will help you to setup the dotfile configurations in your sys
         - Install Pyenv
             ```shell
             curl https://pyenv.run | bash
+            ```
+        
+        - Setting up taskwarrior and timewarrior
+            ```shell
+            cd
+            ln -sf dotfiles/.config/taskwarrior/.task* ~/
+            ln -sf dotfiles/.config/.timewarrior ~/
+            cp /usr/share/doc/timewarrior/ext/on-modify.timewarrior ~/.task/hooks
+            chmod +x ~/.task/hooks/on-modify.timewarrior
+            # Verify the hook is enable
+            task diagnostics
             ```
 
 8. Install Docker CLI
