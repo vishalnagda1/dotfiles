@@ -325,6 +325,7 @@ This guide section will help you to setup the dotfile configurations in your sys
    To install the latest version, run:
    ```shell
    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+   sudo chmod 666 /var/run/docker.sock
    ```
 
    Start docker service:
