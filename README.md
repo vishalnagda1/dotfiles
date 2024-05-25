@@ -306,6 +306,12 @@ This guide section will help you to setup the dotfile configurations in your sys
             # Verify the hook is enable
             task diagnostics
             ```
+        
+        - Install golang
+            ```shell
+            asdf plugin-add golang
+            asdf install golang latest
+            ```
 
 8. Install Docker CLI
 
