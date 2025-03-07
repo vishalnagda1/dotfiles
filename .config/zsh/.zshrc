@@ -71,7 +71,7 @@ ZSH_THEME="jonathan"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting asdf)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting asdf poetry)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -138,13 +138,19 @@ alias lsa="ls -alh"
 alias lsl="ls -l"
 alias dokra="lazydocker"
 alias gita="lazygit"
-alias tngpt="cd ~/dev/tngpt/"
-alias note="cd ~/note-taker/2024-may/"
+alias aiq="cd ~/dev/aiq/"
+alias aif="cd ~/dev/ai-file-processor"
+alias hkpgpt="cd ~/dev/hkpgpt/"
+alias note="cd ~/note-taker/"
 alias dot="cd ~/dotfiles"
 alias datasense="cd ~/dev/datasense"
 alias zshrc="nvim ~/.zshrc"
 alias vimconfig="nvim ~/.config/nvim/init.lua"
 export PATH="$(go env GOPATH)/bin:$PATH"
+alias fshell="poetry run flask shell"
+alias frun="poetry run flask run"
+alias fcel="poetry run celery -A src.app.celery_app worker"
+
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -154,4 +160,37 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+export CUDA_HOME=/usr/local/cuda
+export PATH=$CUDA_HOME/bin:$PATH
+export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/vishal/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/vishal/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/vishal/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/vishal/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/vishal/google-cloud-sdk/path.zsh.inc' ]; then . '/home/vishal/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/vishal/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/vishal/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+# Texlive Exports:
+export MANPATH=/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH
+export INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH
+export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH
 
