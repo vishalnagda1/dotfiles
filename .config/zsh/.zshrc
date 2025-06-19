@@ -71,7 +71,7 @@ ZSH_THEME="jonathan"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting asdf poetry)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -105,6 +105,7 @@ eval "$(starship init zsh)"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH=/usr/local/cuda/bin:$PATH
 export PATH="$HOME/dotfiles/.local/bin:$PATH"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/home/vishal/.rd/bin:$PATH"
@@ -146,7 +147,7 @@ alias dot="cd ~/dotfiles"
 alias datasense="cd ~/dev/datasense"
 alias zshrc="nvim ~/.zshrc"
 alias vimconfig="nvim ~/.config/nvim/init.lua"
-export PATH="$(go env GOPATH)/bin:$PATH"
+# export PATH="$(go env GOPATH)/bin:$PATH"
 alias fshell="poetry run flask shell"
 alias frun="poetry run flask run"
 alias fcel="poetry run celery -A src.app.celery_app worker"

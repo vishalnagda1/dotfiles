@@ -204,7 +204,7 @@ This guide section will help you to setup the dotfile configurations in your sys
         lazygit --version
 
         # install asdf package manager
-        git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
+        git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.16.0
         
         asdf plugin add lazydocker https://github.com/comdotlinux/asdf-lazydocker.git
         asdf install lazydocker latest
